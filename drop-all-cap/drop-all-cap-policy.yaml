@@ -11,4 +11,4 @@ spec:
         operations: ["CREATE", "UPDATE"]
         resources: ["deployments"]
   validations:
-    - expression: ""
+    - expression: "object.spec.template.spec.containers.all(container, has(container.securityContext) && has(container.securityContext.capabilities) && has(container.securityContext.capabilities.drop) && size(container.securityContext.capabilities.drop) >= 1 && container.securityContext.capabilities.drop.exists(c, c == 'ALL')) && object.spec.template.spec.containers.all(container, !has(container.securityContext) || !has(container.securityContext.capabilities) || !has(container.securityContext.capabilities.add) || container.securityContext.capabilities.add.all(cap, cap in params.allowedCapabilities))"
