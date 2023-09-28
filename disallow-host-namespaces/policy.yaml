@@ -1,0 +1,14 @@
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: "disallow-host-namespaces-policy"
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ["apps"]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["deployments"]
+  validations:
+    - expression: "(!has(object.spec.template.spec.hostNetwork) || object.spec.template.spec.hostNetwork == false) && (!has(object.spec.template.spec.hostPID) || object.spec.template.spec.hostPID == false) && (!has(object.spec.template.spec.hostIPC) || object.spec.template.spec.hostPID == false)"

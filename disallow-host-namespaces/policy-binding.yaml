@@ -1,0 +1,7 @@
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: "disallow-host-namespaces-policy-binding"
+spec:
+  policyName: "disallow-host-namespaces-policy"
+  validationActions: [Deny]
