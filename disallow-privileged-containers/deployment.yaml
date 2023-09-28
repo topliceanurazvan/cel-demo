@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wrong-replicas-deployment
+  name: disallow-privileged-containers-deployment
   namespace: demo
   labels:
     app: nginx
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: nginx
@@ -20,3 +20,5 @@ spec:
           image: nginx:1.14.2
           ports:
             - containerPort: 80
+          securityContext:
+            privileged: true
