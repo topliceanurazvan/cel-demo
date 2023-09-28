@@ -4,6 +4,9 @@ metadata:
   name: "demo-binding-test.example.com"
 spec:
   policyName: "demo-policy.example.com"
+  paramRef:
+    name: rule-config
+    namespace: demo
   validationActions: [Deny]
   matchResources:
     namespaceSelector:

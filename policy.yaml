@@ -3,7 +3,9 @@ kind: ValidatingAdmissionPolicy
 metadata:
   name: "demo-policy.example.com"
 spec:
-  failurePolicy: Fail
+  paramKind:
+    apiVersion: v1
+    kind: ConfigMap
   matchConstraints:
     resourceRules:
       - apiGroups: ["apps"]
@@ -11,4 +13,4 @@ spec:
         operations: ["CREATE", "UPDATE"]
         resources: ["deployments"]
   validations:
-    - expression: "object.spec.replicas > 3"
+    - expression: "object.spec.replicas > params.maxReplicas"
