@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: disallow-host-namespaces-deployment
+  name: disallow-host-network-deployment
   namespace: demo
   labels:
     app: nginx
