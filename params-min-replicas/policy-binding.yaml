@@ -1,0 +1,14 @@
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: "params-min-replicas-policy-binding"
+spec:
+  policyName: "params-min-replicas-policy"
+  paramRef:
+    name: rule-config
+    namespace: demo
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector:
+      matchLabels:
+        environment: test
