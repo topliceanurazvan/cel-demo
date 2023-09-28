@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: replicas-deployment
+  name: max-replicas-deployment
   namespace: demo
   labels:
     app: nginx
