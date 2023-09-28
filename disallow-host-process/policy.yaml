@@ -1,0 +1,14 @@
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: "disallow-host-process-policy"
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ["apps"]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["deployments"]
+  validations:
+    - expression: "!has(object.spec.template.spec.securityContext) || !has(object.spec.template.spec.securityContext.windowsOptions) || !has(object.spec.template.spec.securityContext.windowsOptions.hostProcess) || object.spec.template.spec.securityContext.windowsOptions.hostProcess == false"
