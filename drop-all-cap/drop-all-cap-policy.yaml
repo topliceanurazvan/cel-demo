@@ -1,7 +1,7 @@
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingAdmissionPolicy
 metadata:
-  name: "demo-policy.example.com"
+  name: "drop-all-cap-policy"
 spec:
   failurePolicy: Fail
   matchConstraints:
@@ -11,4 +11,4 @@ spec:
         operations: ["CREATE", "UPDATE"]
         resources: ["deployments"]
   validations:
-    - expression: "object.spec.replicas > 3"
+    - expression: ""
