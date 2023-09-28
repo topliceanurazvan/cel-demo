@@ -1,0 +1,7 @@
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: "require-non-root-policy-binding"
+spec:
+  policyName: "require-non-root-policy"
+  validationActions: [Deny]
