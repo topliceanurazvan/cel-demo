@@ -1,5 +1,5 @@
 apiVersion: example.com/v1
-kind: CronTab
+kind: MyCustomResource
 metadata:
   name: my-new-cron-object
 spec:
