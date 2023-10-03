@@ -18,9 +18,7 @@ spec:
           type: object
           properties:
             foo:
-              type: array
+              type: integer
               x-kubernetes-validation:
-                - rule: "size(self) == 1"
-                  message: "size of foo must be 1"
-              items:
-                type: string
+                - rule: "self > 0"
+                  message: "foo must be greather than 0"
