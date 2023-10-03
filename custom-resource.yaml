@@ -3,5 +3,5 @@ kind: MyCustomResource
 metadata:
   name: my-new-custom-resource
 spec:
-  replicas: 20
-  maxReplicas: 10
+  xyz:
+    foo: 10

@@ -20,13 +20,11 @@ spec:
             spec:
               type: object
               x-kubernetes-validation:
-                - rule: "self.replicas <= self.maxReplicas"
-                  message: "replicas must be less than or equal to maxReplicas"
-              properties:
-                replicas:
-                  type: integer
-                maxReplicas:
-                  type: integer
-              required:
-                - replicas
-                - maxReplicas
+                - rule: "self['xyz'].foo > 0"
+                  message: "foo property must be greater than 0"
+              additionalProperties:
+                xyz:
+                  type: object
+                  properties:
+                    foo:
+                      type: integer
