@@ -2,6 +2,5 @@ apiVersion: example.com/v1
 kind: MyCustomResource
 metadata:
   name: my-new-custom-resource
-spec:
-  xyz:
-    foo: 10
+foo:
+  - bar

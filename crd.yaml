@@ -17,14 +17,10 @@ spec:
         openAPIV3Schema:
           type: object
           properties:
-            spec:
-              type: object
+            foo:
+              type: array
               x-kubernetes-validation:
-                - rule: "self['xyz'].foo > 0"
-                  message: "foo property must be greater than 0"
-              additionalProperties:
-                xyz:
-                  type: object
-                  properties:
-                    foo:
-                      type: integer
+                - rule: "size(self) == 1"
+                  message: "size of foo must be 1"
+              items:
+                type: string
