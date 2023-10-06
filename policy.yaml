@@ -14,3 +14,4 @@ spec:
         resources: [ "deployments" ]
   validations:
     - expression: "object.spec.replicas > params.spec.minReplicas"
+      messageExpression: "'Replicas should be greater than ' + string(params.spec.minReplicas)"
