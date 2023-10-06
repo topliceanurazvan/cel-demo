@@ -3,4 +3,5 @@ kind: ConfigMap
 metadata:
   name: rule-config
   namespace: demo
-maxReplicas: 5
+spec:
+  minReplicas: 2
